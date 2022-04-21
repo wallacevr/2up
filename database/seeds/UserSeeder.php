@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\User;
+use Faker\Generator as Faker;
 class UserSeeder extends Seeder
 {
     /**
@@ -21,5 +22,16 @@ class UserSeeder extends Seeder
 
         ];
         DB::table('users')->insert($users);
+         
+
+        for($i=1; $i < 5; $i++){
+            $users=factory(User::class)->make()->toArray();
+         
+            //dd($users->toArray());
+            foreach ($users as $user) {
+               User::create($user);
+           }
+        } 
+         
     }
 }

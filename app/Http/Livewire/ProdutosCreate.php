@@ -39,9 +39,10 @@ class ProdutosCreate extends Component
         try {
             Produto::create($data);
             toast('Produto Cadastrado com Sucesso!','success');
-            return redirect('usuarios');
+            return redirect('produtos');
         } catch (\Exception $e) {
-            //throw $th;
+            toast('error','Erro ao Cadastrar produto!');
+            return redirect('produtos');
         }
     }
 

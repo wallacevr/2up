@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Models\Pedido;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','cpf','dtnascimento'
+        'name', 'email', 'password','cpf','dtnascimento','created_at','updated_at','deleted_at'
     ];
 
     /**
@@ -35,8 +35,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'dtnascimento' => 'datetime:d/m/Y',
     ];
-
+    
+        
     protected $dates = [
         'created_at',
         'updated_at',
@@ -44,5 +46,7 @@ class User extends Authenticatable
         'dtnascimento',
     ];
 
-
+    public function pedido(){
+        return $this->hasMany('Pedido');
+    }
 }

@@ -25,7 +25,6 @@
     @livewireScripts()
 
 @livewireStyles()
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css" integrity="sha512-l7qZAq1JcXdHei6h2z8h8sMe3NbMrmowhOl+QkP3UhifPpCW2MC4M0i26Y8wYpbz1xD9t61MLT9L1N773dzlOA==" cr
 
 </head>
 <body>
@@ -54,7 +53,7 @@
                         <a class="nav-link" href="{{route('produtos')}}">Produtos</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">Pedidos</a>
+                        <a class="nav-link" href="{{route('pedidos')}}">Pedidos</a>
                       </li>
 
                   </ul>
@@ -79,11 +78,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                         
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

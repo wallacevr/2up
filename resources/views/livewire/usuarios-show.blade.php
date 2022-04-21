@@ -34,7 +34,7 @@
         </div>
 
         <div class="row mx-5">
-                <button type="button" class="btn btn-secondary mx-3">Voltar</button>
+                <a href="{{ route('usuarios')}}"><button type="button" class="btn btn-secondary mx-3">Voltar</button></a>
 
         </div>
 

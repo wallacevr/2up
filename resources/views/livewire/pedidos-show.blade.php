@@ -1,0 +1,59 @@
+<div>
+<form    enctype="multipart/form-data" name="produtoform" id="produtoform" >
+        @if (!$errors->isEmpty())
+        <div class="alert alert-danger mx-5 text-center">
+            @foreach ($errors->all() as $error)
+
+                {{ $error }}<br/>
+
+            @endforeach
+        </div>
+        @endif
+
+
+        <div class="row mx-5">
+
+
+                        <div class="input-group w-auto p-3">
+                            <span class="input-group-text">Usuário</span>
+                            <select   wire:model.lazy="user_id"  class="form-select" id="user_id" name="user_id" disabled>
+                                    <option value="">Selecione um Usuário</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @endforeach
+                            </select>
+
+                         </div>
+
+
+                        <div class="input-group w-auto p-3" >
+                            <span class="input-group-text">Produto</span>
+                            <select   wire:model.lazy="produto_id"  class="form-select" id="produto_id" name="produto_id"  disabled>
+                                    <option value="">Selecione um Produto</option>
+                                    @foreach ($produtos as $produto)
+                                        <option value="{{$produto->id}}">{{$produto->descricao}}</option>
+                                    @endforeach
+                            </select>
+
+                         </div>
+                         <div class="input-group w-auto p-3">
+                            <span class="input-group-text">Quantidade</span>
+                            <input  type="number"  wire:model="qtd" wire:change="atualizadados"  value="1" min="1" step="1" data-number-to-fixed="1" data-number-stepfactor="100" class="form-control" id="c2" readonly/>
+                        </div>
+                        <div class="input-group w-auto p-3">
+                            <span class="input-group-text">R$</span>
+                            <input  type="number"  wire:model="valor" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="c2" readonly/>
+                        </div>
+                        <div class="input-group w-auto p-3">
+                            <span class="input-group-text">Total R$</span>
+                            <input  type="number"  wire:model="total" value="1000" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="c2" readonly/>
+                        </div>
+
+
+
+        </div>
+        <div class="row mx-5">
+
+            <a href="{{ route('pedidos')}}"><button type="button" class="btn btn-secondary mx-3">Voltar</button></a>
+        </div>
+</div>

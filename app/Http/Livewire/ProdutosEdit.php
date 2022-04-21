@@ -32,10 +32,23 @@ class ProdutosEdit extends Component
     }
 
     public function mount($id){
-        $produto=Produto::findOrFail($id);
-        $this->descricao=$produto->descricao;
-        $this->valor=$produto->valor;
-        $this->produto_id=$id;
+        try {
+            $produto=Produto::findOrFail($id);
+            if(!$produto){
+                throw new Exception("Produto Não Encontrado!", 1);
+                
+            }else{
+                $this->descricao=$produto->descricao;
+                 $this->valor=$produto->valor;
+                $this->produto_id=$id;
+            }
+            
+        } catch (\Throwable $th) {
+            toast('Produto Não encontrado!','error');
+            return redirect('/produtos');
+        }
+
+        
 
     }
 
@@ -45,10 +58,10 @@ class ProdutosEdit extends Component
             $produto=Produto::findOrFail($this->produto_id);
             $produto->update($data);
             toast('Produto Alterado com Sucesso!','success');
-            return redirect('usuarios');
+            return redirect('produtos');
         } catch (\Exception $e) {
             toast('error','Erro ao Alterar produto!');
-            return redirect('usuarios');
+            return redirect('produtos');
         }
     }
 }

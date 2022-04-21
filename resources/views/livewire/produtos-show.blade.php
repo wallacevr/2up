@@ -27,7 +27,8 @@
             <div class="row mx-5">
                     <button type="submit" class="btn btn-primary mx-3">Salvar</button>
                     <button type="reset" class="btn btn-warning mx-3">Limpar</button>
-            </div>
+                    <a href="{{ route('produtos')}}"><button type="button" class="btn btn-secondary mx-3">Voltar</button></a>
+                </div>
 
 
     </form>

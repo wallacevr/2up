@@ -50,6 +50,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        $myException = $exception;
+
+        if($request->is('usuarios/*')){
+          $myException = new \Exception('Usuario não encontrado');
+        }
+
+        if($request->is('produto/show/*')){
+          $myException = new \Exception('Produto não encontrado');
+        }
         return parent::render($request, $exception);
     }
 }

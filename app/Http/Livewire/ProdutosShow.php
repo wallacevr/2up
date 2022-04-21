@@ -14,10 +14,20 @@ class ProdutosShow extends Component
         return view('livewire.produtos-show');
     }
     public function mount($id){
-        $produto=Produto::findOrFail($id);
-        $this->descricao=$produto->descricao;
-        $this->valor=$produto->valor;
-        $this->produto_id=$id;
-
+        try {
+            $produto=Produto::findOrFail($id);
+            if(!$produto){
+                throw new Exception("Produto Não Encontrado!", 1);
+                
+            }else{
+                $this->descricao=$produto->descricao;
+                 $this->valor=$produto->valor;
+                $this->produto_id=$id;
+            }
+            
+        } catch (\Throwable $th) {
+            toast('Produto Não encontrado!','error');
+            return redirect('/produtos');
+        }
     }
 }

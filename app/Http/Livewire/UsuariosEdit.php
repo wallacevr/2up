@@ -47,12 +47,25 @@ class UsuariosEdit extends Component
         return view('livewire.usuarios-edit');
     }
     public function mount($id){
-        $this->user_id=$id;
-        $usuario=User::findOrFail($id);
-        $this->name=$usuario->name;
-        $this->cpf=$usuario->cpf;
-        $this->dtnascimento= date_format($usuario->dtnascimento,'Y-m-d');
-        $this->email=$usuario->email;
+        try {
+            $this->user_id=$id;
+            $usuario=User::findOrFail($id);
+            if(!$usuario){
+                throw new Exception("Usuário Não Encontrado", 1);
+                
+            }else{
+                $this->name=$usuario->name;
+                $this->cpf=$usuario->cpf;
+                $this->dtnascimento= date_format($usuario->dtnascimento,'Y-m-d');
+                $this->email=$usuario->email;
+            }
+            
+            } catch (\Throwable $th) {
+            //throw $th;
+                toast("Usuário Não Encontrado!",'error');
+                return redirect('usuarios');
+             }
+        
     }
 
     public function update(){
