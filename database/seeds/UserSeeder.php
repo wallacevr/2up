@@ -14,11 +14,11 @@ class UserSeeder extends Seeder
     {
         //
         $users[]=[
-            'name'=>'Wallace',
-            'email'=>'wallacevr@gmail.com',
+            'name'=>'Arthur',
+            'email'=>'Arthur@gmail.com',
             'password'=>Hash::make('123mudar'),
             'cpf'=>'45662841071',
-            'dtnascimento'=>'1985-08-19'
+            'dtnascimento'=>'1995-07-01'
 
         ];
         DB::table('users')->insert($users);
