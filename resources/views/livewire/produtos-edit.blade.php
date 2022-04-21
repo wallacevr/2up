@@ -1,5 +1,5 @@
 <div>
-    <form  wire:submit.prevent="store"   enctype="multipart/form-data" name="produtoform" id="produtoform" >
+<form  wire:submit.prevent="update"   enctype="multipart/form-data" name="produtoform" id="produtoform" >
         @if (!$errors->isEmpty())
         <div class="alert alert-danger mx-5 text-center">
             @foreach ($errors->all() as $error)

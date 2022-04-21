@@ -16,7 +16,7 @@ class CreateProdutos extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('descricao');
-            $table->currency('valor');
+            $table->decimal('valor');
             $table->timestamps();
             $table->SoftDeletes();
         });

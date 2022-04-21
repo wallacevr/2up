@@ -33,5 +33,8 @@ Route::get('/usuarios/edit/{id}','UsuarioController@edit')->name('usuarios_edit'
 Route::get('/usuarios/show/{id}','UsuarioController@show')->name('usuarios_show');
 Route::get('/usuarios/delete/{id}','UsuarioController@delete')->name('usuarios_delete');
 Route::get('/produto/create','ProdutosController@create')->name('produto_create');
+Route::get('/produto/edit/{id}','ProdutosController@edit')->name('produto_edit');
+Route::get('/produto/show/{id}','ProdutosController@show')->name('produto_show');
+Route::get('/produtos','ProdutosController@index')->name('produtos');
 Auth::Routes(['register'=>false]);
 

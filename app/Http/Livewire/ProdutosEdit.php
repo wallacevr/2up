@@ -4,12 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Produto;
-class ProdutosCreate extends Component
+class ProdutosEdit extends Component
 {
     public $descricao;
     public $valor;
-
-
+    public $produto_id;
     protected $rules = [
         'descricao'=>'required|string|max:255',
         'valor'=>'required',
@@ -27,22 +26,29 @@ class ProdutosCreate extends Component
 
     ];
 
-
-
     public function render()
     {
-        return view('livewire.produtos-create');
+        return view('livewire.produtos-edit');
     }
 
-    public function store(){
+    public function mount($id){
+        $produto=Produto::findOrFail($id);
+        $this->descricao=$produto->descricao;
+        $this->valor=$produto->valor;
+        $this->produto_id=$id;
+
+    }
+
+    public function update(){
         $data=$this->validate();
         try {
-            Produto::create($data);
-            toast('Produto Cadastrado com Sucesso!','success');
+            $produto=Produto::findOrFail($this->produto_id);
+            $produto->update($data);
+            toast('Produto Alterado com Sucesso!','success');
             return redirect('usuarios');
         } catch (\Exception $e) {
-            //throw $th;
+            toast('error','Erro ao Alterar produto!');
+            return redirect('usuarios');
         }
     }
-
 }

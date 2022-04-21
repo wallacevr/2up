@@ -10,6 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/tailwind.min.css')}}" integrity="sha512-l7qZAq1JcXdHei6h2z8h8sMe3NbMrmowhOl+QkP3UhifPpCW2MC4M0i26Y8wYpbz1xD9t61MLT9L1N773dzlOA==" crossorigin="anonymous" />
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -23,6 +25,7 @@
     @livewireScripts()
 
 @livewireStyles()
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css" integrity="sha512-l7qZAq1JcXdHei6h2z8h8sMe3NbMrmowhOl+QkP3UhifPpCW2MC4M0i26Y8wYpbz1xD9t61MLT9L1N773dzlOA==" cr
 
 </head>
 <body>
@@ -45,10 +48,10 @@
                       <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{route('home')}}">Usuários</a>
+                      <a class="nav-link" href="{{route('usuarios')}}">Usuários</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">Produtos</a>
+                        <a class="nav-link" href="{{route('produtos')}}">Produtos</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}">Pedidos</a>
